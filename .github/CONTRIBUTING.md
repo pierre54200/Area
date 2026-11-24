@@ -27,14 +27,14 @@ The hooks check your commits and pushes automatically (see [Git hooks](#git-hook
 | Branch | Role |
 |---|---|
 | `main` | Stable versions only. No direct commits. |
-| `develop` | Integration branch. No direct commits. |
-| `feat/...`, `fix/...`, ... | One branch per task, created from `develop`. |
+| `dev` | Integration branch. No direct commits. |
+| `feat/...`, `fix/...`, ... | One branch per task, created from `dev`. |
 
 Branch names follow `type/short-description`, in lowercase with dashes.
 The type is the same as for commits.
 
 ```bash
-git switch develop
+git switch dev
 git pull
 git switch -c feat/main-menu
 ```
@@ -180,7 +180,7 @@ and tell the team.
 ## Pull requests
 
 - One pull request = one topic. Keep it small (ideally under 400 changed lines).
-- Target `develop`. Only `develop` is merged into `main`.
+- Target `dev`. Only `dev` is merged into `main`.
 - The **title follows the same format as commits**: `feat(menu): add main menu`.
   It is checked automatically, and it becomes the commit message after a squash merge.
 - Fill in the template, and link the issue with `Closes #12`.
@@ -194,6 +194,6 @@ Before merging:
 
 Merging:
 
-- `feat/...`, `fix/...` into `develop`: **Squash and merge**;
-- `develop` into `main`: **Create a merge commit**;
+- `feat/...`, `fix/...` into `dev`: **Squash and merge**;
+- `dev` into `main`: **Create a merge commit**;
 - delete the branch after merging.
