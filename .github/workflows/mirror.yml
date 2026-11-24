@@ -1,0 +1,24 @@
+name: Mirror
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: mirror
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    if: github.repository == 'pierre54200/Area'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url: git@github.com:EpitechPGE3-2026/G-YEP-500-NCY-5-1-area-4.git
+          ssh_private_key: ${{ secrets.MIRROR_SSH_KEY }}
