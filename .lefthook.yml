@@ -10,6 +10,9 @@ pre-commit:
     conflict: # Check that there are no merge conflicts in staged files
       run: sh .lefthook/pre-commit/conflict.sh {staged_files}
 
+    secrets: # Check that no secret is leaked in staged changes
+      run: sh .lefthook/pre-commit/secrets.sh
+
 commit-msg:
   commands:
     commit: # Check commit message format
