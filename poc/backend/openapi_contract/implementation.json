@@ -1,0 +1,1 @@
+{"POST /api/auth/register":201,"POST /api/auth/login":200,"GET /api/workflows":200,"POST /api/workflows":201,"PATCH /api/workflows/{id}/enabled":200}

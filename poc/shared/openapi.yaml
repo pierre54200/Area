@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info:
+  title: AREA POC API
+  version: 0.1.0
+paths:
+  /api/auth/register:
+    post:
+      operationId: register
+      responses:
+        "201": {description: Account created}
+        "400": {description: Invalid input}
+  /api/auth/login:
+    post:
+      operationId: login
+      responses:
+        "200": {description: Authenticated}
+        "401": {description: Invalid credentials}
+  /api/workflows:
+    get:
+      operationId: listWorkflows
+      responses:
+        "200": {description: Workflow list}
+    post:
+      operationId: createWorkflow
+      responses:
+        "201": {description: Workflow created}
+        "400": {description: Invalid workflow}
+  /api/workflows/{id}/enabled:
+    patch:
+      operationId: setWorkflowEnabled
+      parameters:
+        - {name: id, in: path, required: true, schema: {type: string}}
+      responses:
+        "200": {description: Updated}
+        "404": {description: Not found}

@@ -1,0 +1,20 @@
+{
+  "_id": "workflow-001",
+  "user_id": "user-001",
+  "name": "Notify on new event",
+  "enabled": true,
+  "nodes": [
+    {"id":"trigger","type":"trigger","service":"mail","action":"new_message","params":{"folder":"inbox"}},
+    {"id":"condition","type":"condition","service":"core","action":"matches","params":{"field":"subject","operator":"contains","value":"AREA"}},
+    {"id":"reaction-1","type":"reaction","service":"chat","action":"send_message","params":{"channel":"alerts"}},
+    {"id":"reaction-2","type":"reaction","service":"mail","action":"archive","params":{}},
+    {"id":"reaction-3","type":"reaction","service":"log","action":"write","params":{}},
+    {"id":"reaction-4","type":"reaction","service":"webhook","action":"post","params":{}}
+  ],
+  "edges": [
+    {"source":"trigger","target":"condition"},
+    {"source":"condition","target":"reaction-1","branch":true},
+    {"source":"condition","target":"reaction-2","branch":false}
+  ],
+  "version": 1
+}
